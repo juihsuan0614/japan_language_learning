@@ -1,0 +1,17 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web_express.js",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
