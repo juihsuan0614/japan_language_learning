@@ -1,0 +1,309 @@
+<body class="bg-light">
+    
+<div class="nav-scroller bg-body shadow-sm">
+  <nav class="nav nav-underline" aria-label="Secondary navigation">
+    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+    <a class="nav-link" href="#">
+      Friends
+      <span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span>
+    </a>
+    <a class="nav-link" href="#">Explore</a>
+    <a class="nav-link" href="#">Suggestions</a>
+
+  </nav>
+</div>
+
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
+      <small>Since 2011</small>
+    </div>
+  </div>
+
+  
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+  	<center>
+	  	<ul>
+				<h3>初級 日常單字篇</h3>
+				<h4 class="border-bottom pb-2 mb-0">中文 平假名 轉換</h4>
+			</ul>	
+	  </center>
+
+	  <center>
+		  <ul>
+			  <p>
+				  <div class="shape-control-front" id="btn_A">中文</div><span>&nbsp&nbsp&nbsp&nbsp</span>
+				  <div class="shape-control-back" id="btn_B">平假名</div><span>&nbsp&nbsp&nbsp&nbsp</span>
+				  <div class="shape-control-random" id="btn_Random">隨機單字</div>
+			  </p>
+		  </ul>
+	  </center>
+  
+
+	  <!-- class="d-flex text-muted pt-3" -->
+		<center>
+			<div>		    
+						<ul>
+							<% for(var i=0; i<4; i++) {%>
+							<p><div class="shape-ex2" id="btn<%= words[i].number %>" ><%= words[i].front %></div></p>
+							  <% } %>  
+						</ul>
+		  </div>
+	  </center>
+  </div>
+
+
+
+
+
+</main>
+
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+      <script src="offcanvas.js"></script>
+	  
+	  
+	  <script>
+	
+		const btn_A = document.getElementById('btn_A');
+		const btn_B = document.getElementById('btn_B');
+		const btn_Random = document.getElementById('btn_Random');
+		
+		const btn1 = document.getElementById('btn1');
+		const btn2 = document.getElementById('btn2');
+		const btn3 = document.getElementById('btn3');
+		const btn4 = document.getElementById('btn4');
+		
+		
+			
+		
+		words_front = []
+		words_back = []
+				
+		var ranNum = <%- words.length %>
+		
+		<% for (var i = 0; i < words.length ; i++) { %>
+				words_front.push('<%- words[i].front %>');
+				words_back.push('<%- words[i].chinese %>');
+		<%}%>		
+		
+
+		
+		btn_A.addEventListener('click', function handleClick() {
+			
+
+	
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn1.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index_1 = '<%- i %>';
+				}
+				
+				if( btn2.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index_2 = '<%- i %>';
+				}
+				
+				if( btn3.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index_3 = '<%- i %>';
+				}
+				
+				if( btn4.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index_4 = '<%- i %>';
+				}			
+				
+			<%}%>
+						
+			
+			if( btn1.innerHTML == words_front[index_1] ){
+				btn1.innerHTML = words_back[index_1];
+			}
+				
+			
+			if( btn2.innerHTML == words_front[index_2] ){
+				btn2.innerHTML = words_back[index_2];
+			}
+			
+			if( btn3.innerHTML == words_front[index_3] ){
+				btn3.innerHTML = words_back[index_3];
+			}
+			
+			if( btn4.innerHTML == words_front[index_4] ){
+				btn4.innerHTML = words_back[index_4];
+			}
+			
+		});			
+
+		btn_B.addEventListener('click', function handleClick() {
+		
+		
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn1.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index_1 = '<%- i %>';
+				}
+				
+				if( btn2.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index_2 = '<%- i %>';
+				}
+				
+				if( btn3.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index_3 = '<%- i %>';
+				}
+				
+				if( btn4.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index_4 = '<%- i %>';
+				}				
+				
+			<%}%>
+			
+			if(btn1.innerHTML == words_back[index_1]){
+				btn1.innerHTML = words_front[index_1];
+			}
+			if(btn2.innerHTML == words_back[index_2]){
+				btn2.innerHTML = words_front[index_2];
+			}
+			if(btn3.innerHTML == words_back[index_3]){
+				btn3.innerHTML = words_front[index_3];
+			}
+			if(btn4.innerHTML == words_back[index_4]){
+				btn4.innerHTML = words_front[index_4];
+			}
+
+		});				
+
+		btn_Random.addEventListener('click', function handleClick() {
+			
+			var ran1 = Math.floor(Math.random() * ranNum);
+			var ran2 = Math.floor(Math.random() * ranNum);
+			var ran3 = Math.floor(Math.random() * ranNum);
+			var ran4 = Math.floor(Math.random() * ranNum);
+				
+			var ran1_pattern = Math.floor(Math.random() * 2);
+			var ran2_pattern = Math.floor(Math.random() * 2);
+			var ran3_pattern = Math.floor(Math.random() * 2);
+			var ran4_pattern = Math.floor(Math.random() * 2);				
+			
+			
+			if( ran1_pattern == 1){
+				btn1.innerHTML  = words_front[ran1];
+			}else{
+				btn1.innerHTML  = words_back[ran1];
+			}
+				
+			if( ran2_pattern == 1){
+				btn2.innerHTML  = words_front[ran2];
+			}else{
+				btn2.innerHTML  = words_back[ran2];
+			}
+			
+			if( ran3_pattern == 1){
+				btn3.innerHTML  = words_front[ran3];
+			}else{
+				btn3.innerHTML  = words_back[ran3];
+			}
+			
+			if( ran4_pattern == 1){
+				btn4.innerHTML  = words_front[ran4];
+			}else{
+				btn4.innerHTML  = words_back[ran4];
+			}
+									
+		});	
+
+		
+		btn1.addEventListener('click', function handleClick() {
+			
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn1.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index = '<%- i %>';
+				}
+				if( btn1.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index = '<%- i %>';
+				}
+				
+			<%}%>
+
+			if( btn1.innerHTML == words_front[index] ){
+				btn1.innerHTML = words_back[index];
+			}
+			else{
+				btn1.innerHTML = words_front[index];
+			}
+					
+			
+		});		
+		
+		btn2.addEventListener('click', function handleClick() {
+		
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn2.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index = '<%- i %>';
+				}
+				if( btn2.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index = '<%- i %>';
+				}
+				
+			<%}%>
+
+			if( btn2.innerHTML == words_front[index] ){
+				btn2.innerHTML = words_back[index];
+			}
+			else{
+				btn2.innerHTML = words_front[index];
+			}
+			
+		});		
+		
+		btn3.addEventListener('click', function handleClick() {
+		
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn3.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index = '<%- i %>';
+				}
+				if( btn3.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index = '<%- i %>';
+				}
+				
+			<%}%>
+
+			if( btn3.innerHTML == words_front[index] ){
+				btn3.innerHTML = words_back[index];
+			}
+			else{
+				btn3.innerHTML = words_front[index];
+			}
+			
+		});		
+		
+		btn4.addEventListener('click', function handleClick() {
+		
+			<% for (var i = 0; i < words.length ; i++) { %>
+			
+				if( btn4.innerHTML ==  '<%= words[i].front %>'  ){ 
+					var index = '<%- i %>';
+				}
+				if( btn4.innerHTML ==  '<%= words[i].chinese %>'  ){ 
+					var index = '<%- i %>';
+				}
+				
+			<%}%>
+
+			if( btn4.innerHTML == words_front[index] ){
+				btn4.innerHTML = words_back[index];
+			}
+			else{
+				btn4.innerHTML = words_front[index];
+			}
+			
+		});		  	  
+
+
+	  </script>
+  </body>

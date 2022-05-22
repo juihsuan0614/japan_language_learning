@@ -22,10 +22,32 @@ for(let item of textByline){
 
 console.log(json_list);
 
-app.get('/', function (req, res) {
-//     res.send(`<p>Hello World</p>`)
-     
-       res.render('index',{words: json_list});
+app.get('/FrontBack', function (req, res) {
+       res.render('front-back_main',{words: json_list});
 });
-      let port = 8080;
+
+app.get('/FrontChinese', function (req, res) {
+
+	res.render('front-chinese_main',{words: json_list});
+
+});
+
+app.get('/BackChinese', function (req, res) {
+
+	res.render('back-chinese_main',{words: json_list});
+
+});
+
+app.get('/AllWords', function (req, res) {
+
+
+
+	res.render('all-words_main',{words: json_list});
+
+
+
+});
+
+
+let port = 8080;
 app.listen(port);

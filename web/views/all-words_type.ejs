@@ -1,0 +1,53 @@
+<body class="bg-light">
+    
+<div class="nav-scroller bg-body shadow-sm">
+  <nav class="nav nav-underline" aria-label="Secondary navigation">
+    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+    <a class="nav-link" href="#">
+      Friends
+      <span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span>
+    </a>
+    <a class="nav-link" href="#">Explore</a>
+    <a class="nav-link" href="#">Suggestions</a>
+
+  </nav>
+</div>
+
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
+      <small>Since 2011</small>
+    </div>
+  </div>
+
+  
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+
+  	<center>
+	  	<ul>
+				<h3>初級 日常單字篇</h3>
+				<h4 class="border-bottom pb-2 mb-0">目前所有收錄單字</h4>
+			</ul>	
+	  </center>  
+
+	  <!-- class="d-flex text-muted pt-3" -->
+		<center>
+			<table border="1">		
+			<tr><td>編號</td><td>中文</td><td>平假名</td><td>片假名</td></tr>
+				<% for(var i=0; i< words.length; i++) {%>
+					<tr><td><%= words[i].number %></td><td><%= words[i].chinese %></td><td><%= words[i].front %></td><td><%= words[i].back %></td></tr>
+				<% } %>  
+		  </table>
+	  </center>
+  </div>
+
+</main>
+
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+      <script src="offcanvas.js"></script>
+	  
+  </body>
